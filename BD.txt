@@ -1,0 +1,46 @@
+
+--****SECUENCIAS****
+
+CREATE SEQUENCE SEQ_CUENTA
+START WITH 1
+INCREMENT BY 1;
+
+CREATE SEQUENCE SEQ_RELACION
+START WITH 1
+INCREMENT BY 1;
+
+--****TABLAS****
+
+-- Tabla CUENTA
+CREATE TABLE CUENTA (
+    cod_cuenta NUMBER(7) PRIMARY KEY,
+    nombres VARCHAR2(50),
+    apellidos VARCHAR2(50),
+    contrasena VARCHAR2(25),
+    usuario VARCHAR2(50)
+);
+
+-- Tabla asignaturas
+CREATE TABLE asignaturas (
+    id_asignatura NUMBER(7) PRIMARY KEY,
+    nombre_asignatura VARCHAR2(50)
+);
+
+-- Tabla persona_asignatura
+CREATE TABLE persona_asignatura (
+    id_relacion NUMBER(7) PRIMARY KEY,
+    cod_cuenta NUMBER(5),
+    id_asignatura NUMBER(5),
+    FOREIGN KEY (cod_cuenta) REFERENCES CUENTA(cod_cuenta),
+    FOREIGN KEY (id_asignatura) REFERENCES asignaturas(id_asignatura)
+);
+
+--******INSERCION DE DATOS*****
+
+INSERT INTO asignaturas VALUES(1,'Desarrollo de Software de escritorio');
+INSERT INTO asignaturas VALUES(2,'Diseño de prototipos');
+INSERT INTO asignaturas VALUES(3,'Consulta de base de datos');
+INSERT INTO asignaturas VALUES(4,'Matemática Aplicada');
+INSERT INTO asignaturas VALUES(5,'Programación Web');
+INSERT INTO asignaturas VALUES(6,'Modelamiento de Base de Datos');
+INSERT INTO asignaturas VALUES(7,'Estadística descriptiva');
